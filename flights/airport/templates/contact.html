@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="contact-section">
+    <h2>Contact Us</h2>
+    <p>If you have any questions, feel free to reach out!</p>
+
+    <div class="contact-info">
+        <p>Email: <a href="mailto:example@gmail.com">example@gmail.com</a></p>
+        <p>Phone: +91 123 456 7890</p>
+        <p>Address: 123 Flight Street, Aviation City, India</p>
+    </div>
+
+    <form class="contact-form" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="search-container">
+    <form method="get">
+        <input type="text" name="origin" placeholder="Origin" value="{{ request.GET.origin }}">
+        <input type="text" name="destination" placeholder="Destination" value="{{ request.GET.destination }}">
+        <input type="date" name="date" value="{{ request.GET.date }}">
+        <button type="submit">Search</button>
+    </form>
+</section>
+
+<section class="flights-table-section">
+    <table class="flights-table">
+        <thead>
+            <tr>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Time</th>
+                <th>Duration</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for flight in flights %}
+            <tr>
+                <td>{{ flight.origin }}</td>
+                <td>{{ flight.destination }}</td>
+                <td>{{ flight.time }}</td>
+                <td>{{ flight.duration }}</td>
+                <td><a href="{% url 'book_flight' flight.id %}" class="book-btn">Book Now</a></td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5">No flights available</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Your Booked Flight</h1>
+    {% if booking %}
+    <table>
+        <thead>
+            <tr>
+                <th>Flight</th>
+                <th>Passenger Name</th>
+                <th>Booking Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ flight.origin }} → {{ flight.destination }}</td>
+                <td>{{ booking.passenger_name }}</td>
+                <td>{{ booking.booking_date }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% else %}
+        <p>You haven't booked any flights yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

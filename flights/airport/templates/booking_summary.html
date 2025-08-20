@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Booking Summary</h2>
+<p>Passenger: {{ booking.passenger_name }}</p>
+<p>Flight: {{ booking.flight.origin }} → {{ booking.flight.destination }} on {{ booking.flight.date }}</p>
+<p>Seat Number: {{ booking.seat_number }}</p>
+<p>Booking Date: {{ booking.booking_date }}</p>
+<a href="{% url 'index' %}">Back to Home</a>
+{% endblock %}
