@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Flight Portal{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'logo.png' %}" alt="Flight Logo" width="120">
+            </a>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                {% if last_flight_id %}
+                    <li><a href="{% url 'booking_summary' last_flight_id  %}">Your Flights</a></li>
+                {% else %}
+                    <li><span class="disabled">Your Flights</span></li>
+                {% endif %}
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Fly High, Fly Smart</h1>
+        <p>Book your flights effortlessly. Fast, safe, and reliable.</p>
+    </div>
+</section>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <div class="footer-container">
+        <p>Contact us at: example@gmail.com</p>
+        <p>&copy; 2025 Flight Portal. All Rights Reserved.</p>
+    </div>
+</footer>
+</body>
+</html>

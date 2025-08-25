@@ -1,0 +1,22 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'booking.css' %}">
+
+<div class="container">
+    <h1>Book Flight: {{ flight.origin }} to {{ flight.destination }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Passenger Name:</label>
+        <input type="text" name="passenger_name" required>
+        
+        <label>Booking Date:</label>
+        <input type="date" name="booking_date" required>
+        
+        <button type="submit" class="btn"  >Book Flight</button>
+    </form>
+</div>
+{% endblock %}
